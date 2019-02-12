@@ -5,6 +5,7 @@ from time import sleep
 
 driver = webdriver.Chrome()
 
+
 def site_login(logData):
     driver.get("https://10.1.0.10:8090/httpclient.html")
     for uname, pwd in logData:
@@ -18,17 +19,17 @@ def site_login(logData):
             driver.find_element_by_name("password").send_keys(pwd)
 
             driver.find_element_by_name("btnSubmit").click()
-            sleep(1.5)
+            sleep(0.4)
         except NoSuchElementException:
             driver.find_element_by_name("username").send_keys(uname)
             driver.find_element_by_name("password").send_keys(pwd)
 
             driver.find_element_by_name("btnSubmit").click()
-            sleep(1.5)
+            sleep(0.4)
 
 
 if __name__ == "__main__":
-
-    logData = [('f20160320', 'soluchan'), ('f20160372', '123456789'), ('f20160342', 'mcbclic1234'), ('f20160393', 'randirona')]
+    logData = [('uname1', 'pass1')]
 
     site_login(logData)
+    driver.close()
